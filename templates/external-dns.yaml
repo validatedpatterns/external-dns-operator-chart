@@ -1,0 +1,24 @@
+---
+apiVersion: externaldns.olm.openshift.io/v1beta1
+kind: ExternalDNS
+metadata:
+  name: aws
+spec:
+  domains:
+  - filterType: Include
+    matchType: Exact
+{{- $domainLabels := splitList "." $.Values.global.clusterDomain }}
+    name: {{ join "." (slice $domainLabels 1) }}
+  provider:
+    type: {{ $.Values.global.clusterPlatform }}
+  source:
+    type: Service
+    service:
+      serviceType:
+        - LoadBalancer
+    hostnameAnnotation: "Allow"
+    fqdnTemplate:
+      - '{{ "{{" }}.Name{{ "}}" }}.{{ $.Values.global.clusterDomain }}'
+    labelFilter:
+      matchLabels:
+        external-dns.validatedpatterns.io/publish: "yes"

@@ -1,0 +1,4 @@
+---
+global:
+  clusterDomain: clustername.test.example.com
+  clusterPlatform: AWS

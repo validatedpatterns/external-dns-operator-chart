@@ -1,0 +1,6 @@
+apiVersion: v2
+name: external-dns-operator
+description: External DNS Operator chart
+type: application
+version: 0.1.0
+dependencies: [ ]
