@@ -2,7 +2,7 @@
 apiVersion: externaldns.olm.openshift.io/v1beta1
 kind: ExternalDNS
 metadata:
-  name: aws
+  name: {{ lower $.Values.global.clusterPlatform }}
 spec:
   domains:
   - filterType: Include
