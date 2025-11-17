@@ -11,7 +11,7 @@ implicitly uses the cluster cloud credentials to authorize DNS changes.
 
 ### Notable changes
 
-* v0.1.1: Introduce fqdnTemplate value to allow customization of fqdnTemplate(s)
+* v0.1.3: Introduce fqdnTemplate value to allow customization of fqdnTemplate(s)
 * v0.1.0: Initial release
 
 ## Values
