@@ -18,7 +18,13 @@ spec:
         - LoadBalancer
     hostnameAnnotation: "Allow"
     fqdnTemplate:
+{{- if .Values.dns.fqdnTemplate }}
+{{- range .Values.dns.fqdnTemplate }}
+      - {{ . | squote }}
+{{- end }}
+{{- else }}
       - '{{ "{{" }}.Name{{ "}}" }}.{{ $.Values.global.clusterDomain }}'
+{{- end }}
     labelFilter:
       matchLabels:
         external-dns.validatedpatterns.io/publish: "yes"

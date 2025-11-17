@@ -2,3 +2,8 @@
 global:
   clusterDomain: clustername.test.example.com
   clusterPlatform: AWS
+
+dns:
+  fqdnTemplate: []
+  # If not set, this will default to:
+  # - '{{ "{{" }}.Name{{ "}}" }}.{{ $.Values.global.clusterDomain }}'

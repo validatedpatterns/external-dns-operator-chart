@@ -1,6 +1,6 @@
 # external-dns-operator
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 External DNS Operator chart
 
@@ -11,12 +11,14 @@ implicitly uses the cluster cloud credentials to authorize DNS changes.
 
 ### Notable changes
 
+* v0.1.3: Introduce fqdnTemplate value to allow customization of fqdnTemplate(s)
 * v0.1.0: Initial release
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| dns.fqdnTemplate | list | `[]` |  |
 | global.clusterDomain | string | `"clustername.test.example.com"` |  |
 | global.clusterPlatform | string | `"AWS"` |  |
 
