@@ -1,0 +1,31 @@
+{{- if .Values.dns.routes.enabled }}
+---
+apiVersion: externaldns.olm.openshift.io/v1beta1
+kind: ExternalDNS
+metadata:
+  name: {{ printf "%s-openshift-route" (lower $.Values.global.clusterPlatform) }}
+spec:
+  domains:
+  - filterType: Include
+    matchType: Exact
+{{- $domainLabels := splitList "." $.Values.global.clusterDomain }}
+    name: {{ join "." (slice $domainLabels 1) }}
+  provider:
+    type: {{ $.Values.global.clusterPlatform }}
+  source:
+    type: OpenShiftRoute
+    openshiftRouteOptions:
+      routerName: {{ .Values.dns.routes.routerName | quote }}
+    hostnameAnnotation: "Allow"
+    fqdnTemplate:
+{{- if .Values.dns.fqdnTemplate }}
+{{- range .Values.dns.fqdnTemplate }}
+      - {{ . | squote }}
+{{- end }}
+{{- else }}
+      - '{{ "{{" }}.Name{{ "}}" }}.{{ $.Values.global.clusterDomain }}'
+{{- end }}
+    labelFilter:
+      matchLabels:
+        external-dns.validatedpatterns.io/publish: "yes"
+{{- end }}

@@ -1,6 +1,6 @@
 # external-dns-operator
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 External DNS Operator chart
 
@@ -11,6 +11,7 @@ implicitly uses the cluster cloud credentials to authorize DNS changes.
 
 ### Notable changes
 
+* v0.1.4: Optional second ExternalDNS instance for OpenShift Routes (same fqdnTemplate and labels as Services)
 * v0.1.3: Introduce fqdnTemplate value to allow customization of fqdnTemplate(s)
 * v0.1.0: Initial release
 
@@ -19,6 +20,8 @@ implicitly uses the cluster cloud credentials to authorize DNS changes.
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | dns.fqdnTemplate | list | `[]` |  |
+| dns.routes.enabled | bool | `true` | Deploy a second ExternalDNS with source OpenShiftRoute (same fqdnTemplate and label filter as Services). Requires OpenShift Route API. |
+| dns.routes.routerName | string | `"default"` | Ingress controller name from Route.status.ingress[].routerName (often "default"). |
 | global.clusterDomain | string | `"clustername.test.example.com"` |  |
 | global.clusterPlatform | string | `"AWS"` |  |
 

@@ -7,3 +7,8 @@ dns:
   fqdnTemplate: []
   # If not set, this will default to:
   # - '{{ "{{" }}.Name{{ "}}" }}.{{ $.Values.global.clusterDomain }}'
+  routes:
+    # -- Deploy a second ExternalDNS with source OpenShiftRoute (same fqdnTemplate and label filter as Services). Requires OpenShift Route API.
+    enabled: true
+    # -- Ingress controller name from Route.status.ingress[].routerName (often "default").
+    routerName: default
