@@ -20,7 +20,7 @@ implicitly uses the cluster cloud credentials to authorize DNS changes.
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | dns.fqdnTemplate | list | `[]` |  |
-| dns.routes.enabled | bool | `true` | Deploy a second ExternalDNS with source OpenShiftRoute (same fqdnTemplate and label filter as Services). Requires OpenShift Route API. |
+| dns.routes.enabled | bool | `false` | Deploy a second ExternalDNS with source OpenShiftRoute (same fqdnTemplate and label filter as Services). Requires OpenShift Route API. |
 | dns.routes.routerName | string | `"default"` | Ingress controller name from Route.status.ingress[].routerName (often "default"). |
 | global.clusterDomain | string | `"clustername.test.example.com"` |  |
 | global.clusterPlatform | string | `"AWS"` |  |
